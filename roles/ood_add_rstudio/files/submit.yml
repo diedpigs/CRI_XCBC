@@ -5,3 +5,5 @@ script:
   native:
     - "-c"
     - "<%= num_cores.blank? ? 1 : num_cores.to_i %>"
+    - "-t"
+    - "<%= bc_num_hours.blank? ? 1 : bc_num_hours.to_i %>:00:00"
