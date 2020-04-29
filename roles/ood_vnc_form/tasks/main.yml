@@ -16,3 +16,8 @@
     src: custom-novnc.html.erb
     dest: /var/www/ood/apps/sys/dashboard/app/views/batch_connect/sessions/connections/_novnc.html.erb
     backup: yes
+
+- name: Put form.js in place
+  copy:
+    src: form.js
+    dest: /var/www/ood/apps/sys/bc_desktop/form.js
