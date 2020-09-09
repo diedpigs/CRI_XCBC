@@ -6,7 +6,7 @@
       agent {
         docker {
           image 'cytopia/ansible-lint'
-          args '--volume=${PWD}:/data'
+          args '--entrypoint='
         }
       }
       steps {
