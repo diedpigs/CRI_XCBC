@@ -12,7 +12,7 @@
       steps {
         script {
           try {
-            sh 'ansible-lint *.yaml'
+            sh 'ansible-lint -q'
           } catch (err) {
             echo err.getMessage()
             unstable('Linting failed')
