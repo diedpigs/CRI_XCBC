@@ -6,7 +6,7 @@
       agent {
         docker {
           image 'cytopia/ansible-lint'
-          args '--entrypoint='
+          args '-u root:root --entrypoint='
         }
       }
       steps {
