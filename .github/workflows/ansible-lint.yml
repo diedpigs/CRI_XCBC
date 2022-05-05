@@ -11,7 +11,7 @@ jobs:
 
       - name: Lint Ansible Playbook
         # replace `main` with any valid ref, or tags like `v6`
-        uses: ansible-community/ansible-lint-action@v6
+        uses: ansible-community/ansible-lint-action@main
         # optional:
         #with:
         #  args: "."  # <-- only one value is allowed
