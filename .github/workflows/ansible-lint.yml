@@ -8,6 +8,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Get file changes
+        id: get_file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
+          fileOutput: ' '
+
+      - name: Echo file changes
+        run: |
+          cat $HOME/files.txt
 
       - name: Lint Ansible Playbook
         # replace `main` with any valid ref, or tags like `v6`
