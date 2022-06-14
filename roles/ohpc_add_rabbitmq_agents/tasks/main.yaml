@@ -23,6 +23,13 @@
   copy:
     src: mail_config.py
     dest: "{{ rabbitmq_agents_loc }}/mail_config.py"
+  when: not mail_config_url | length
+
+- name: Install mail template as mail_config file
+  get_url:
+    url: "{{ mail_config_url }}"
+    dest: "{{ rabbitmq_agents_loc }}/mail_config.py"
+  when: mail_config_url | length
 
 - name: Setup the venv for rabbitmq agents
   pip:
