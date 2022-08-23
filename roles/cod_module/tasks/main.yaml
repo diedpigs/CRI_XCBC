@@ -20,7 +20,7 @@
 - name: Put DefaultModules in place
   copy:
     src: DefaultModules.lua
-    dest: "{{ item }}"
+    dest: {{ item }}
   loop:
     - "/usr/share/modulefiles"
     - "/cm/images/default-image/usr/share/modulefiles"
