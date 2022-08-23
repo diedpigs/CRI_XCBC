@@ -6,8 +6,17 @@
 exclude_paths:
   - .cache/ # implicit unless exclude_paths is defined in config
   - .github/
+  - roles/compute_build_nodes
   - roles/compute_build_vnfs
-  - roles/cod_module
+  - roles/gpu_build_nodes
+  - roles/gpu_build_vnfs
+  - roles/login_build_nodes
+  - roles/login_build_vnfs
+  - roles/nodes_vivify
+  - roles/ohpc_config
+  - roles/ohpc_install
+  - roles/pre_ohpc
+  - roles/viz_build_nodes
 
 # parseable: true
 # quiet: true
