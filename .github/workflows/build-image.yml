@@ -13,7 +13,9 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
 
-      - name: Check out gitlab repo
-        uses: actions/checkout@v3
-        with:
-          repository: "https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git"
+      - name: Clone packer repo
+        run: |
+          git clone https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git
+
+      - name: Check cwd
+        run: ls
