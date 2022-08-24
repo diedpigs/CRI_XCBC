@@ -1,0 +1,19 @@
+name: Build OpenStack image
+
+on:
+  pull_request:
+    branch:
+      - test-action
+
+jobs:
+  publish_image:
+    name: Build OpenStack image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Check out gitlab repo
+        uses: actions/checkout@v3
+        with:
+          repository: "https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git"
