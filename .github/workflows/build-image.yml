@@ -1,0 +1,50 @@
+name: Build OpenStack image
+
+on:
+  pull_request:
+    branch:
+      - test-action
+
+jobs:
+  build_image:
+    name: Build OpenStack image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+
+      - name: Install necessary packages
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install ansible s3cmd
+      - name: Clone packer repo
+        run: |
+          git clone https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git
+
+      - name: Get packer variables file
+        run: |
+          cd packer-openstack-hpc-image
+          cp openstack.pkrvars.hcl{.example,}
+
+      - name: Validate Template
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          arguments: -syntax-only
+          target: openstack
+          working_directory: packer-openstack-hpc-image
+
+      - name: Build Artifact
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: build
+          arguments: "-color=false -on-error=abort"
+          target: openstack
+          working_directory: packer-openstack-hpc-image
+        env:
+          PACKER_LOG: 1
