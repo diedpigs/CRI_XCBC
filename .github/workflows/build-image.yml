@@ -27,7 +27,9 @@ jobs:
           git clone https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git ../packer-openstack-hpc-image
 
       - name: Check cwd
-        run: ls ..
+        run: |
+          pwd
+          ls ..
 
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
