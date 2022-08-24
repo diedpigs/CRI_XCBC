@@ -24,12 +24,12 @@ jobs:
           pip install ansible s3cmd
       - name: Clone packer repo
         run: |
-          git clone https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git ../packer-openstack-hpc-image
+          git clone https://gitlab.rc.uab.edu/rc/packer-openstack-hpc-image.git
 
-      - name: Check cwd
+      - name: Get packer variables file
         run: |
-          pwd
-          ls ..
+          cd packer-openstack-hpc-image
+          cp openstack.pkrvars.hcl{.example,}
 
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
@@ -37,7 +37,7 @@ jobs:
           command: validate
           arguments: -syntax-only
           target: openstack
-          working_directory: ../packer-openstack-hpc-image
+          working_directory: packer-openstack-hpc-image
 
       - name: Build Artifact
         uses: hashicorp/packer-github-actions@master
@@ -45,6 +45,6 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: openstack
-          working_directory: ../packer-openstack-hpc-image
+          working_directory: packer-openstack-hpc-image
         env:
           PACKER_LOG: 1
