@@ -1,4 +1,9 @@
 ---
+- name: Update SitePackge.lua
+  copy:
+    src: ../../shared-files/SitePackage.lua
+    dest: "{{ lmod_loc }}/libexec/SitePackage.lua"
+
 - name: Setup rsyslog
   template:
     src: rsyslog.j2
