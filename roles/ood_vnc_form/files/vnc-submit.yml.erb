@@ -1,5 +1,13 @@
+<%-
+  email = ENV['USER']
+  if !email.include? '@'
+    email = email + '@uab.edu'
+  end
+-%>
 ---
 script:
+  job_environment:
+    USER: "<%= ENV['USER'] %>"
   native:
     - "-N 1"
     - "-n <%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
@@ -7,6 +15,10 @@ script:
     - "--partition=<%= bc_partition %>"
     - "--time=<%= bc_num_hours.blank? ? 1 : bc_num_hours.to_i %>:00:00"
     - "--job-name=ood-vnc"
-<%- if bc_partition.include? "pascalnodes" -%>
-    - "--gres=gpu:1"
+<%- if bc_partition.include? "pascalnodes" or bc_partition.include? "amperenodes" -%>
+    - "--gres=gpu:<%= bc_num_gpus.blank? ? 1 : bc_num_gpus.to_i %>"
+<%- end -%>
+<%- if bc_email_on_started == "1" -%>
+    - "--mail-type=BEGIN"
+    - "--mail-user=<%= email %>"
 <%- end -%>
