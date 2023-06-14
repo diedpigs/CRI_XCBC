@@ -79,7 +79,7 @@
   relion_ood_app_dir: "{{ ood_sys_apps_dir }}/relion"
   relion_ood_app_repo: "https://github.com/uabrc/bc_uab_relion.git"
   relion_ood_app_refspec: "{{ github_refspec }}"
-  relion_ood_app_version: "master"
+  relion_ood_app_version: "main"
 
 #UAB UI customize
   ood_dashboard_title: "UAB Research Computing"
