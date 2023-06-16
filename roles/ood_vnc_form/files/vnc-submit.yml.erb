@@ -22,3 +22,7 @@ script:
     - "--mail-type=BEGIN"
     - "--mail-user=<%= email %>"
 <%- end -%>
+<%- if bc_email_on_started == "1" -%>
+    - "--mail-type=BEGIN"
+    - "--mail-user=<%= email %>"
+<%- end -%>
