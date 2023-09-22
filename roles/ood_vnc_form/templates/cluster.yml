@@ -40,7 +40,6 @@ attributes:
       - [ "largemem", "largemem" ]
       - [ "largemem-long", "largemem-long" ]
       - [ "amd-hdr100", "amd-hdr100" ]
-      - [ "amperenodes-debug", "amperenodes-debug" ]
       - [ "amperenodes", "amperenodes" ]
       - [ "amperenodes-medium", "amperenodes-medium" ]
 
