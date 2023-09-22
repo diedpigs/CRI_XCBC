@@ -23,3 +23,4 @@
     - { name: 'ood_igv', tags: 'ood_igv', when: igv_provision }
     - { name: 'ood_enable_sandbox', tags: 'ood_enable_sandbox', when: enable_sandbox }
     - { name: 'local_user', tags: 'local_user', when: local_user.username | length > 0 }
+    - { name: 'install_node_exporter', tags: 'install_node_exporter', when: enable_node_exporter }
