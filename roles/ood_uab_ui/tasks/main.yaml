@@ -23,6 +23,12 @@
     src: favicon.ico
     dest: "/var/www/ood/public"
 
+- name: Update motd html class
+  replace:
+    path: "{{ ood_sys_apps_dir }}/dashboard/app/views/dashboard/_motd_markdown.html.erb"
+    regexp: "^<div>(.*)"
+    replace: "<div class='ood-appkit markdown'>\\g<1>"
+
 - name: Add cheaha logo image
   copy:
     src: "{{ ood_dashboard_logo_filename }}"
